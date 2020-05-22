@@ -82,16 +82,16 @@ WSGI_APPLICATION = 'ahome_api.wsgi.application'
 #    }
 #}
 
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'ahome_api_project',
-        'USER': 'root',
-        'PASSWORD': '12345678',
-        'HOST': 'localhost',
-        'PORT': ''
-    }
-}
+#DATABASES = {
+#    'default': {
+#        'ENGINE': 'django.db.backends.mysql',
+#        'NAME': 'ahome_api_project',
+#        'USER': 'root',
+#        'PASSWORD': '12345678',
+#        'HOST': 'localhost',
+#        'PORT': ''
+#    }
+#}
 
 # Password validation
 # https://docs.djangoproject.com/en/3.0/ref/settings/#auth-password-validators
@@ -131,3 +131,9 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
+
+#configuraciones para la base de datos
+
+import django_heroku
+
+django_heroku.settings(locals())
