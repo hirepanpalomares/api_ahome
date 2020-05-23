@@ -25,8 +25,8 @@ SECRET_KEY = 'f4za*cxvd@ojqroimn5j6d%j2om2)z@lh6jry_vp0#a0h@l3(u'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['ahome-api.herokuapp.com']
-
+#ALLOWED_HOSTS = ['ahome-api.herokuapp.com']
+ALLOWED_HOSTS = []
 
 # Application definition
 
@@ -39,7 +39,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'searcher',
     'rest_framework',
-    'corsheaders'
+    'corsheaders'  # necesario para apis
 ]
 
 MIDDLEWARE = [
@@ -50,8 +50,7 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
-    #'django_hosts.middleware.HostsResponseMiddleware',
-    'corsheaders.middleware.CorsMiddleware',
+    'corsheaders.middleware.CorsMiddleware', # necesario para apis
 ]
 
 ROOT_URLCONF = 'ahome_api.urls'
@@ -85,16 +84,16 @@ WSGI_APPLICATION = 'ahome_api.wsgi.application'
 #    }
 #}
 
-#DATABASES = {
-#    'default': {
-#        'ENGINE': 'django.db.backends.mysql',
-#        'NAME': 'ahome_api_project',
-#        'USER': 'root',
-#        'PASSWORD': '12345678',
-#        'HOST': 'localhost',
-#        'PORT': ''
-#    }
-#}
+DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.mysql',
+        'NAME': 'ahome_api_project',
+        'USER': 'root',
+        'PASSWORD': '12345678',
+        'HOST': 'localhost',
+        'PORT': ''
+    }
+}
 
 # Password validation
 # https://docs.djangoproject.com/en/3.0/ref/settings/#auth-password-validators
@@ -135,20 +134,20 @@ USE_TZ = True
 STATIC_URL = '/static/'
 STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 
-#configuraciones para la base de datos
+#configuraciones para la base de datos para heroku
 
-import django_heroku
+#import django_heroku
 
-django_heroku.settings(locals())
+#django_heroku.settings(locals())
 
 
 
-REST_FRAMEWORK = {
+REST_FRAMEWORK = {   # necesario para apis
     'DEFAULT_AUTHENTICATION_CLASSES': [
         'rest_framework.authentication.SessionAuthentication'
     ]
 }
 
 
-CORS_ORIGIN_ALLOW_ALL = True
-CORS_ALLOW_CREDENTIALS = True
+CORS_ORIGIN_ALLOW_ALL = True  # necesario para apis
+CORS_ALLOW_CREDENTIALS = True # necesario para apis
