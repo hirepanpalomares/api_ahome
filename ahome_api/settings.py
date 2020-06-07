@@ -157,4 +157,3 @@ EMAIL_HOST_PASSWORD = os.environ.get("PWD_EMAIL")
 EMAIL_USE_TLS = False
 EMAIL_USE_SSL = True
 
-ef98926da16fcf64e7f6509de7b2be7df56b5dbf509d468b
