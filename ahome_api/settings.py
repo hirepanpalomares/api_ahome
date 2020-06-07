@@ -20,13 +20,16 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 # See https://docs.djangoproject.com/en/3.0/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'f4za*cxvd@ojqroimn5j6d%j2om2)z@lh6jry_vp0#a0h@l3(u'
+#SECRET_KEY = 'f4za*cxvd@ojqroimn5j6d%j2om2)z@lh6jry_vp0#a0h@l3(u'
+SECRET_KEY = os.environ.get("SECRET_KEY")
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+#DEBUG = True
+DEBUG = os.environ.get("DEBUG_VALUE")
 
-#ALLOWED_HOSTS = ['ahome-api.herokuapp.com']
-ALLOWED_HOSTS = []
+
+ALLOWED_HOSTS = ['ahome-api.herokuapp.com']
+#ALLOWED_HOSTS = []
 
 # Application definition
 
@@ -38,6 +41,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'searcher',
+    'contact',
     'rest_framework',
     'corsheaders'  # necesario para apis
 ]
@@ -77,23 +81,18 @@ WSGI_APPLICATION = 'ahome_api.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/3.0/ref/settings/#databases
 
+
+
 #DATABASES = {
 #    'default': {
-#        'ENGINE': 'django.db.backends.sqlite3',
-#        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+#        'ENGINE': 'django.db.backends.mysql',
+#        'NAME': 'ahome_api_project',
+#        'USER': 'root',
+#        'PASSWORD': '12345678',
+#        'HOST': 'localhost',
+#        'PORT': ''
 #    }
 #}
-
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'ahome_api_project',
-        'USER': 'root',
-        'PASSWORD': '12345678',
-        'HOST': 'localhost',
-        'PORT': ''
-    }
-}
 
 # Password validation
 # https://docs.djangoproject.com/en/3.0/ref/settings/#auth-password-validators
@@ -119,7 +118,7 @@ AUTH_PASSWORD_VALIDATORS = [
 
 LANGUAGE_CODE = 'en-us'
 
-TIME_ZONE = 'UTC'
+TIME_ZONE = 'Mexico/General'
 
 USE_I18N = True
 
@@ -135,10 +134,8 @@ STATIC_URL = '/static/'
 STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 
 #configuraciones para la base de datos para heroku
-
-#import django_heroku
-
-#django_heroku.settings(locals())
+import django_heroku
+django_heroku.settings(locals())
 
 
 
@@ -151,3 +148,13 @@ REST_FRAMEWORK = {   # necesario para apis
 
 CORS_ORIGIN_ALLOW_ALL = True  # necesario para apis
 CORS_ALLOW_CREDENTIALS = True # necesario para apis
+
+
+EMAIL_HOST = 'giow1077.siteground.us'
+EMAIL_PORT = '465' 
+EMAIL_HOST_USER = 'website@ahome.com.mx'
+EMAIL_HOST_PASSWORD = os.environ.get("PWD_EMAIL")
+EMAIL_USE_TLS = False
+EMAIL_USE_SSL = True
+
+ef98926da16fcf64e7f6509de7b2be7df56b5dbf509d468b

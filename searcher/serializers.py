@@ -11,7 +11,7 @@ from searcher.models import ImageProperty, Property
 
 #searcher serializer
 
-class SearcherSerializer(serializers.ModelSerializer):
+class PropertySerializer(serializers.ModelSerializer):
     class Meta:
         model = Property
         fields = '__all__'
